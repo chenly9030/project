@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!-- 
+		package:模块，按照业务分开不同的模块就行协同开发
+		|** name: 给模块起一个名字，名字必须是唯一的。区分不同的模块，为了继承
+		|** extends:继承一个package，就可以使用继承的package中定义的功能
+		|** namespace:命名空间，地址添加了一个标识
+			|** http://localhost:8080/projectname/namespace/actionname.action
+	 -->
+	<package name="admin" namespace="/hw" extends="struts-default">
+		<!-- 
+			action:一个客户端的请求，对应服务器上的一个Action控制器
+			|** name:请求的名称，也是url地址
+			|** class:Action控制器的全名称【包名称+类名称】
+				|** 默认是com.opensymphony.xwork2.ActionSupport
+			|** method:要调用的目标方法；默认是execute()方法
+		 -->
+		<action name="hello">
+			<!-- 
+				result:结果类型，接受Action返回的结果字符串
+				|** name:用来匹配Action的方法返回的字符串
+				|** type:请求的跳转方式
+				|** 标签体：要跳转到的页面或者Action
+			 -->
+			<result>/success.jsp</result>
+		</action>
+	</package>
+	
+	<package name="front" namespace="/" extends="struts-default">
+		<action name="login" class="com.lzcc.action.LoginAction" method="login">
+			<result>/success.jsp</result>
+		</action>
+	</package>
+</struts>
